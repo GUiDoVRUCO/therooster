@@ -1,0 +1,399 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #111;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* Cabeçalho de navegação */
+header {
+    background-color: #000;
+    padding: 15px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Navbar flexível */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Logo */
+.logo-img {
+    width: 180px;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.logo-img:hover {
+
+}
+
+#menu-toggle {
+    display: flex;
+    flex-direction: column;
+
+    span {
+        margin-bottom: 2px;
+        background-color: #fff;
+        height: 2px;
+        width: 20px;
+    }
+}
+
+.group-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Ícone do menu mobile */
+.menu-toggle {
+    display: none;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Links de navegação */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links li a {
+    color: #fff;
+    font-size: 1.2em;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+    font-weight: bold;
+}
+
+.nav-links li a:hover {
+    color: #ff6600;
+}
+
+/* Estilo responsivo para mobile */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        margin-left: 40px;
+    }
+
+    /* Alteração para dispositivos móveis */
+    .group-header {
+        flex-direction: row; /* Inverte a ordem da logo e do menu hambúrguer */
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: rgba(0, 0, 0, 0.9);
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        gap: 20px;
+        display: none;
+    }
+
+    .nav-links.open { /* Alterar para 'open' */
+        display: flex;
+    }
+}
+
+/* Ajuste da navegação para dispositivos móveis */
+@media (max-width: 768px) {
+    .navbar {
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    .nav-links li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .nav-links li a {
+        font-size: 1.5em;
+    }
+}
+
+/* Hero Section */
+.hero {
+    background: url('https://via.placeholder.com/1920x1080') center/cover no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    animation: fadeIn 3s ease-in-out;
+    margin-top: 80px;
+    /* Espaço para o cabeçalho */
+}
+
+.hero-content {
+    z-index: 2;
+    color: #fff;
+    animation: slideIn 2s ease-out;
+}
+
+.hero h1 {
+    font-size: 4em;
+    color: #ff6600;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+.hero p {
+    font-size: 1.5em;
+    margin-top: 20px;
+    color: #fff;
+}
+
+/* Ajustes para Hero Section em dispositivos móveis */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2em;
+        letter-spacing: 2px;
+    }
+
+    .hero p {
+        font-size: 1.2em;
+    }
+}
+
+/* Menu Categories */
+.menu-category {
+    padding: 80px 0;
+    text-align: center;
+    background-color: #222;
+    position: relative;
+    transition: background-color 0.5s ease;
+}
+
+.menu-category:hover {
+    background-color: #333;
+}
+
+.menu-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Ajuste de colunas para dispositivos móveis */
+@media (max-width: 768px) {
+    .menu-items {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /* Garante 2 itens por linha */
+        gap: 10px;
+        /* Espaçamento entre os itens */
+        padding: 20px;
+    }
+
+    .menu-item {
+        width: 100%;
+        /* Garante que os itens preencham corretamente a grade */
+    }
+}
+
+.menu-category h2 {
+    font-size: 2.5em;
+    color: #ff6600;
+    margin-bottom: 20px;
+}
+
+/* Estilo do item do cardápio */
+.menu-item {
+    position: relative;
+    background-color: #333;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    opacity: 0;
+    animation: fadeInUp 1.5s ease-in-out forwards;
+}
+
+.menu-item:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+.menu-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.menu-item .content {
+    padding: 20px;
+    text-align: center;
+}
+
+.menu-item .content h3 {
+    font-size: 1.8em;
+    color: #fff;
+    margin: 10px 0;
+}
+
+.menu-item .content p {
+    color: #bbb;
+    margin: 10px 0;
+}
+
+.menu-item .content .price {
+    font-size: 1.5em;
+    color: #ff6600;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(50px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilo básico para o modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+
+    &.active {
+        display: block;
+    }
+}
+
+.modal-content {
+    border-radius: 15px;
+    background-color: #333;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+
+    h3 {
+        color: #ff6600;
+        margin-bottom: 36px;
+    }
+
+    p {
+        margin-bottom: 24px;
+    }
+
+    #modalPrice {
+        color: #ff6600
+    }
+
+    img {
+        margin-right: 32px;
+        border-radius: 20px;
+        height: 320px;
+        width: 360px;
+    }
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 724px) {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        #modalInfo {
+            max-width: 100%;
+        }
+
+        h3 {
+            margin-bottom: 16px;
+        }
+
+        img {
+            height: 35%;
+            width: 90%;
+            margin-right: 0;
+            margin-bottom: 16px;
+        }
+    }
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #ff6600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#modalInfo {
+    max-width: 55%;
+}
